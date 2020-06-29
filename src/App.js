@@ -30,14 +30,9 @@ class App extends React.Component {
         userRef.onSnapshot(snapShot => {
           // moram koristiti metodu data() da bi u biti dobio stvarne podatke iz snapshota
           // ali unutar samo dokumenta nemam ID...koristim ID od snapshota, i sve unutar dokumenta spredam
-          this.setState(
-            {
-              currentUser: { id: snapShot.id, ...snapShot.data() }
-            },
-            () => {
-              console.log(this.state);
-            }
-          );
+          this.setState({
+            currentUser: { id: snapShot.id, ...snapShot.data() }
+          });
         });
       } else {
         this.setState({ currentUser: null });
