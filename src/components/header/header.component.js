@@ -6,8 +6,10 @@ import { connect } from "react-redux";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, cartHidden }) => {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
@@ -29,13 +31,16 @@ const Header = ({ currentUser }) => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
+      {!cartHidden && <CartDropdown />}
     </div>
   );
 };
 
 const mapState = state => ({
-  currentUser: state.user.currentUser
+  currentUser: state.user.currentUser,
+  cartHidden: state.cart.hidden
 });
 
 export default connect(mapState)(Header);
