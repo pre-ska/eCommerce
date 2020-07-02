@@ -11,6 +11,7 @@ import { toggleCartHidden } from "../../redux/cart/cart.actions";
 
 import "./checkout.styles.scss";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
 
 const Checkout = ({ cartItems, total }) => {
   return (
@@ -38,6 +39,12 @@ const Checkout = ({ cartItems, total }) => {
       <div className="total">
         <span>TOTAL: ${total}</span>
       </div>
+      <div className="test-warning">
+        {" "}
+        test credit card <br />
+        4242 4242 4242 4242
+      </div>
+      <StripeCheckoutButton price={total} />
     </div>
   );
 };
